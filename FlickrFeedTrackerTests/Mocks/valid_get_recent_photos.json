@@ -1,0 +1,22 @@
+{
+    "photos": {
+        "page": 1,
+        "pages": 1000,
+        "perpage": 1,
+        "total": 1000,
+        "photo": [
+            {
+                "id": "52914499467",
+                "owner": "105343926@N08",
+                "secret": "60d1f65afa",
+                "server": "65535",
+                "farm": 66,
+                "title": "2305-_DSF4428",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            }
+        ]
+    },
+    "stat": "ok"
+}

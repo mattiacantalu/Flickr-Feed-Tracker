@@ -1,0 +1,20 @@
+import Foundation
+
+class ListCellViewModel {
+    private let service: MImageProtocol
+    private let photoModel: Photo
+
+    init(service: MImageProtocol,
+         photoModel: Photo) {
+        self.service = service
+        self.photoModel = photoModel
+    }
+
+    private var urlComponent: String {
+        "\(photoModel.serverId)/\(photoModel.id)_\(photoModel.secret).jpg"
+    }
+
+    func fetchImage() async throws -> Data {
+        try await service.downloadImage(from: urlComponent)
+    }
+}

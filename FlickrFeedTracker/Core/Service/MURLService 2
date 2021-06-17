@@ -1,0 +1,33 @@
+import Foundation
+
+protocol MURLServiceProtocol {
+    @MainActor func performTask(with request: URLRequest) async throws -> (Data, URLResponse)
+    @MainActor func performTask(with url: URL) async throws -> (Data, URLResponse)
+}
+
+struct MURLService {
+    private let session: MURLSessionProtocol
+    private let dispatcher: Dispatcher
+
+    init(session: MURLSessionProtocol = MURLSession(),
+         dispatcher: Dispatcher = DefaultDispatcher()) {
+        self.session = session
+        self.dispatcher = dispatcher
+    }
+}
+
+extension MURLService: MURLServiceProtocol {
+    @MainActor
+    func performTask(with request: URLRequest) async throws -> (Data, URLResponse) {
+//        dispatcher.dispatch {
+            try await session.dataTask(with: request)
+//        }
+    }
+
+    @MainActor
+    func performTask(with url: URL) async throws -> (Data, URLResponse) {
+//        dispatcher.dispatch {
+            try await session.dataTask(with: url)
+//        }
+    }
+}
